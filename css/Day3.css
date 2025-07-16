@@ -1,0 +1,29 @@
+/* inline => justify
+and bloc => align */  
+.hero{
+    background-color: antiquewhite;
+ display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap:20px;
+       max-width: 900px;
+  margin: auto;
+  
+    
+}
+
+
+.hero img {
+  width: 100%; /* 🔹 fills each grid column */
+  height: auto;
+  border-radius: 16px; /* 🔹 rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 🔹 soft shadow */
+  object-fit: cover; /* 🔹 keeps image aspect ratio */
+  transition: transform 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #fdfcf9;
+}
+
