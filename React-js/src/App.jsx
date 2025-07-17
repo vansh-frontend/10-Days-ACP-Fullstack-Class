@@ -1,36 +1,61 @@
-// const App = () =>{
-//   return (
-//     <div>
-//       <h1>Hello i am Vansh 👋</h1>
-//       <p>I am Frontend Dev💻</p>
-//       <button>Resume📃</button>
-//     </div>
-//   );
-// }
-//
+import React, { useState } from 'react';
+import Info from './Info';
+import API from './API';
+import Counter from './Counter';
+import './App.css';
 
-import { useState } from 'react';
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => 
-        {
-          if(count === 10) return;
-          setCount(count + 1);
-        
-        }}> + </button>
+    <div classname="App">
+      <Counter />
+      <hr className="separator" />
 
-      <button onClick={()=> 
-      {if (count > 0){
-        setCount(count - 1);
-      }}}> - </button>
+  <div className="form-section">
+    <h1>React Form</h1>
+    <form>
+      <label htmlFor="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+      <button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+          setUsername("");
+          setPassword("");
+        }}
+      >
+        Submit
+      </button>
+    </form>
+  </div>
 
 
+      <Info username={username} password={password} />
+  
+  <hr className="separator" />
+      <API/>
     </div>
   );
 };
 
 export default App;
+
