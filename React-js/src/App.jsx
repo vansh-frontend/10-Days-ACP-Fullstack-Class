@@ -1,61 +1,30 @@
-import React, { useState } from 'react';
-import Info from './Info';
-import API from './API';
-import Counter from './Counter';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Counter from './Pages/Counter';
+import API from './Pages/API';
+import Form from './Pages/Form';
 import './App.css';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Register from './Components/Register';
+import Login from './Components/Login';
 
 const App = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
   return (
-    <div classname="App">
-      <Counter />
-      <hr className="separator" />
-
-  <div className="form-section">
-    <h1>React Form</h1>
-    <form>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-
-      <button
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          alert("Form submitted successfully!");
-          setUsername("");
-          setPassword("");
-        }}
-      >
-        Submit
-      </button>
-    </form>
-  </div>
-
-
-      <Info username={username} password={password} />
-  
-  <hr className="separator" />
-      <API/>
-    </div>
+    <BrowserRouter>
+      <Header /> 
+      <main className="main-content">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Form />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/api" element={<API />} />
+        </Routes>
+      </main>
+      <Footer /> 
+    </BrowserRouter>
   );
 };
 
 export default App;
-
